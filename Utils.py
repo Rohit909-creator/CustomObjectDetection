@@ -22,4 +22,4 @@ def draw_bbox(segmented_img_path, output_img_path):
     cv2.imwrite("output2.jpg", frame)
     return output_img_path
 
-draw_bbox(f'./masks/mask188.jpg', f'./frames/frame188.jpg')
+# draw_bbox(f'./masks/mask188.jpg', f'./frames/frame188.jpg')
