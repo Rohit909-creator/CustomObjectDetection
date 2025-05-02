@@ -21,7 +21,7 @@ def getframes(videopath):
     cam.release()
     
 def showframes():
-    
+
     count = 0
     
     while True:
@@ -31,8 +31,7 @@ def showframes():
         mask = cv2.imread(f'./masks/mask{count}.jpg')
         frame = cv2.imread(f'./frames/frame{count}.jpg')
         
-        draw_bbox(f'./masks/mask{count}.jpg', f'./frames/frame{count}.jpg')
-        
+        draw_bbox(f'./masks/mask{count}.jpg', f'./frames/frame{count}.jpg')        
 
 getframes(videopath = "Object_detection_sample_test - Made with Clipchamp.mp4")
 
@@ -80,5 +79,5 @@ with torch.inference_mode(), torch.autocast("cuda", dtype=torch.bfloat16):
         mask = (mask > 0).astype(np.uint8) * 255  # Convert binary mask to 0-255 range
         cv2.imshow('masks', mask)
         cv2.waitKey(1)
-        cv2.imwrite(f"./masks/mask{frame_idx}.jpg", mask)
+        # cv2.imwrite(f"./masks/mask{frame_idx}.jpg", mask)
     cv2.destroyAllWindows()

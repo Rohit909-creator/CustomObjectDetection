@@ -1,0 +1,25 @@
+import cv2
+import numpy as np
+
+def draw_bbox(segmented_img_path, output_img_path):
+    # Load the segmented image
+    img = cv2.imread(segmented_img_path, cv2.IMREAD_GRAYSCALE)
+    if img is None:
+        raise ValueError("Image not found or could not be loaded.")
+    
+    # Find contours of the white object
+    contours, _ = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    
+    # Load original image in color to draw bounding box
+    img_color = cv2.imread(segmented_img_path)
+    frame = cv2.imread(output_img_path)
+    # Draw bounding boxes around detected objects
+    for contour in contours:
+        x, y, w, h = cv2.boundingRect(contour)
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    
+    # Save the output image
+    cv2.imwrite("output2.jpg", frame)
+    return output_img_path
+
+draw_bbox(f'./masks/mask188.jpg', f'./frames/frame188.jpg')
