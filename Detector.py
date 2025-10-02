@@ -8,10 +8,10 @@ from sam2.sam2_video_predictor import SAM2VideoPredictor
 from Utils import click_image, draw_bbox, folder2video, prepare_dataset
 
 class ObjectDetectionDatasetCreator:
-    def __init__(self, image_folder, model_name="facebook/sam2-hiera-base-plus"):
+    def __init__(self, image_folder, output_dir='dataset', model_name="facebook/sam2-hiera-base-plus"):
         self.image_folder = Path(image_folder)
         self.temp_video = "temp_video.mp4"
-        self.output_dir = Path("dataset")
+        self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True)
         
         # Create subdirectories for YOLO format
@@ -157,6 +157,6 @@ names: ['object']  # class names
 if __name__ == "__main__":
     # Simple usage
     creator = ObjectDetectionDatasetCreator(
-        image_folder="./SampleImages"
+        image_folder="./aeroplanes"
     )
     creator.create_dataset()

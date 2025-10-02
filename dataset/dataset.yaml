@@ -1,7 +1,0 @@
-# Dataset configuration for YOLO training
-path: C:\Users\Rohit Francis\Documents\GitHub\CustomObjectDetection\dataset
-train: images
-val: images
-
-nc: 1  # number of classes
-names: ['object']  # class names
