@@ -10,7 +10,5 @@ Thus, you can annotate custom objects for which there is no pre-trained model av
 ```bash
 python Detector.py
 ```
-I want a quote below
 
-"Et voilà!, plus besoin de chercher des datasets sur internet, plus besoin de passer des heures à annoter des images, SAMnotate s'occupe de tout!"
-- Me
+`Et voilà!, plus besoin de chercher des datasets sur internet, plus besoin de passer des heures à annoter des images, SAMnotate s'occupe de tout!`- Me
