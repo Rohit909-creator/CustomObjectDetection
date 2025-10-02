@@ -2,6 +2,7 @@
 import cv2
 import numpy as np
 from pathlib import Path
+import os
 
 def click_image(image_path):
     """Allow user to click on object to select ROI"""
@@ -86,3 +87,18 @@ def prepare_dataset(annotations_dict, output_dir):
     output_dir.mkdir(exist_ok=True)
     (output_dir / "images").mkdir(exist_ok=True)
     (output_dir / "labels").mkdir(exist_ok=True)
+    
+def rename_files_in_folder(folder_path):
+
+    for i, filename in enumerate(os.listdir(folder_path)):
+
+        old_file = os.path.join(folder_path, filename)
+
+        if os.path.isdir(old_file):
+            continue
+
+        new_filename = filename.replace(filename, f"00{i}.jpg")
+        new_file = os.path.join(folder_path, new_filename)
+        os.rename(old_file, new_file)
+
+        print(f"renamed: {filename} to {new_filename}")
